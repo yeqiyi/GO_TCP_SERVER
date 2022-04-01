@@ -5,6 +5,7 @@ import (
 	"context"
 	"encoding/json"
 	"errors"
+	"log"
 	"net"
 	"sync"
 	"tcp_server/body"
@@ -114,7 +115,6 @@ func receiveResp(c *Conn){
 				if err:=json.Unmarshal(scanner.Bytes(),resp);err!=nil{
 					return
 				}
-				//log.Println("resp=",resp)
 				uid:=resp.Uid
 				if load,ok:=c.retChan.Load(uid);ok{
 					c.retChan.Delete(load)

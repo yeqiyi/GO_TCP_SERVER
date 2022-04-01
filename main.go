@@ -35,8 +35,8 @@ func transfer(conn net.Conn) {
             //conn.Write([]byte(msg.Val))
             var rsp body.Resp
             rsp.Uid = msg.Uid
-            rsp.Val = TAG + msg.Val
-            ser, _ := json.Marshal(msg)
+            rsp.Val = "Hello,"+msg.Uid
+            ser, _ := json.Marshal(rsp)
 
             conn.Write(append(ser, '\n'))
         }
